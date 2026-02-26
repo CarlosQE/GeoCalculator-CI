@@ -8,21 +8,20 @@ on:
 
 jobs:
   build-and-test:
-    [cite_start]runs-on: ubuntu-latest [cite: 86]
-
+    runs-on: ubuntu-latest
     steps:
-      - [cite_start]uses: actions/checkout@v3 [cite: 88]
+      - uses: actions/checkout@v3
 
       - name: Setup .NET
-        [cite_start]uses: actions/setup-dotnet@v3 [cite: 90]
+        uses: actions/setup-dotnet@v3
         with:
-          [cite_start]dotnet-version: 7.x [cite: 92]
+          dotnet-version: 7.x
 
       - name: Restore dependencies
-        [cite_start]run: dotnet restore [cite: 94]
+        run: dotnet restore
 
       - name: Build
-        [cite_start]run: dotnet build --no-restore [cite: 96]
+        run: dotnet build --no-restore
 
       - name: Test
-        [cite_start]run: dotnet test --no-build --verbosity normal [cite: 98]
+        run: dotnet test --no-build --verbosity normal
