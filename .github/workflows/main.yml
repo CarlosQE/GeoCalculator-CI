@@ -8,20 +8,20 @@ on:
 
 jobs:
   build-and-test:
-    [cite_start]runs-on: windows-latest # Necesario para aplicaciones Windows Desktop [cite: 86]
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          [cite_start]dotnet-version: 7.x # Versión establecida en el laboratorio [cite: 92]
+          dotnet-version: 7.x
 
       - name: Restore dependencies
         run: dotnet restore GeoCalculator.sln
 
       - name: Build
-        [cite_start]run: dotnet build GeoCalculator.sln --no-restore --configuration Release [cite: 96]
+        run: dotnet build GeoCalculator.sln --no-restore --configuration Release
 
       - name: Test
-        [cite_start]run: dotnet test GeoCalculator.sln --no-build --configuration Release --verbosity normal [cite: 98]
+        run: dotnet test GeoCalculator.sln --no-build --configuration Release --verbosity normal
