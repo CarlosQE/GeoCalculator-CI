@@ -1,36 +1,28 @@
-# Nombre del Pipeline para identificarlo en la pestaña Actions [cite: 78]
-[cite_start]name: .NET CI Pipeline [cite: 78]
+name: .NET CI Pipeline
 
-# Disparadores: Se ejecuta en cada Push o Pull Request hacia la rama main [cite: 79, 80, 82]
 on:
   push:
-    [cite_start]branches: [ main ] [cite: 81]
+    branches: [ main ]
   pull_request:
-    [cite_start]branches: [ main ] [cite: 83]
+    branches: [ main ]
 
-# Definición de las tareas (jobs) [cite: 84]
 jobs:
-  [cite_start]build-and-test: [cite: 85]
-    [cite_start]runs-on: ubuntu-latest [cite: 86] # Entorno de ejecución [cite: 86]
+  build-and-test:
+    [cite_start]runs-on: ubuntu-latest [cite: 86]
 
-    [cite_start]steps: [cite: 87]
-      # Descarga el código del repositorio [cite: 88]
+    steps:
       - [cite_start]uses: actions/checkout@v3 [cite: 88]
 
-      # Configura el entorno de .NET [cite: 89]
-      - [cite_start]name: Setup .NET [cite: 89]
+      - name: Setup .NET
         [cite_start]uses: actions/setup-dotnet@v3 [cite: 90]
         with:
-          [cite_start]dotnet-version: 7.x [cite: 91, 92] # Versión estándar del laboratorio 
+          [cite_start]dotnet-version: 7.x [cite: 92]
 
-      # Restaura las librerías necesarias [cite: 93]
-      - [cite_start]name: Restore dependencies [cite: 93]
+      - name: Restore dependencies
         [cite_start]run: dotnet restore [cite: 94]
 
-      # Compila el código para verificar que no haya errores de sintaxis [cite: 95]
-      - [cite_start]name: Build [cite: 95]
+      - name: Build
         [cite_start]run: dotnet build --no-restore [cite: 96]
 
-      # Ejecuta las pruebas unitarias automáticamente [cite: 97]
-      - [cite_start]name: Test [cite: 98]
+      - name: Test
         [cite_start]run: dotnet test --no-build --verbosity normal [cite: 98]
