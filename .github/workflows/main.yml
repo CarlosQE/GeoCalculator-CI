@@ -8,20 +8,20 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: windows-latest # Cambiamos a Windows para evitar líos con WinForms
+    [cite_start]runs-on: windows-latest # Necesario para aplicaciones Windows Desktop [cite: 86]
     steps:
       - uses: actions/checkout@v3
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 7.x
+          [cite_start]dotnet-version: 7.x # Versión establecida en el laboratorio [cite: 92]
 
-      - name: Restore
-        run: dotnet restore GeoCalculator.sln # Apuntamos directo al mapa
+      - name: Restore dependencies
+        run: dotnet restore GeoCalculator.sln
 
       - name: Build
-        run: dotnet build GeoCalculator.sln --no-restore --configuration Release
+        [cite_start]run: dotnet build GeoCalculator.sln --no-restore --configuration Release [cite: 96]
 
       - name: Test
-        run: dotnet test GeoCalculator.sln --no-build --verbosity normal
+        [cite_start]run: dotnet test GeoCalculator.sln --no-build --configuration Release --verbosity normal [cite: 98]
