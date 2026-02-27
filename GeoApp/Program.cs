@@ -13,4 +13,6 @@ static class Program
         ApplicationConfiguration.Initialize();
         Application.Run(new Form1());
     }    
+
 }
+// prueba de build
