@@ -14,3 +14,5 @@ namespace GeoApp.Models
         public static double AreaTriangulo(double baseT, double altura) => (baseT * altura) / 2;
     }
 }
+
+//listo
